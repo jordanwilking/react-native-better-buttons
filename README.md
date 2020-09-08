@@ -67,6 +67,26 @@ return (
 )
 ```
 
+#### useMeasurement
+
+```js
+const { dimensions, setRef } = useMeasurement(buffer)
+
+const handlePressIn = (e: GestureResponderEvent) => {
+  const { pageX, pageY } = e.nativeEvent
+  const { minX, maxX, minY, maxY } = dimensions
+  // Do work
+}
+
+return (
+  <View
+    ref={setRef}
+    onStartShouldSetResponder={() => true}
+    onResponderGrant={handlePressIn}
+  />
+)
+```
+
 ## Properties
 
 | name                        | description                                          | type     | default      |

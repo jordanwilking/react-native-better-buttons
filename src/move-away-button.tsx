@@ -42,13 +42,11 @@ const MoveAwayButton = ({
   rippleOpacity = 0.3,
   rippleContainerBorderRadius,
   longPressTimeout,
-  moveCancelBuffer = 10,
+  moveCancelBuffer: buffer = 10,
   RippleProps,
   ...ViewProps
 }: MoveAwayButtonProps) => {
-  const { dimensions, setRef, onLayout } = useMeasurement({
-    buffer: moveCancelBuffer,
-  })
+  const { dimensions, setRef } = useMeasurement(buffer)
 
   const handlePressIn = (e: GestureResponderEvent) => {
     if (pressed && onPressIn) {
@@ -90,7 +88,6 @@ const MoveAwayButton = ({
           onResponderGrant={handlePressIn}
           onResponderMove={handleMove}
           onResponderRelease={handleRelease}
-          onLayout={onLayout}
           onResponderTerminationRequest={() => false}
           {...ViewProps}>
           {children}
@@ -105,7 +102,6 @@ const MoveAwayButton = ({
           onPressIn={handlePressIn}
           onMove={handleMove}
           onPressOut={handleRelease}
-          onLayout={onLayout}
           {...ViewProps}
           {...RippleProps}>
           {children}

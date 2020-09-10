@@ -17,7 +17,7 @@ export type LongPressButtonProps = {
   onPressOut?: (e?: GestureResponderEvent) => void | Promise<void> | Falsy
   style?: StyleProp<ViewStyle>
   pressedStyle?: StyleProp<ViewStyle>
-  disableRipple?: boolean
+  disableRipple?: boolean | Falsy
   rippleColor?: string
   rippleOpacity?: number
   rippleContainerBorderRadius?: number

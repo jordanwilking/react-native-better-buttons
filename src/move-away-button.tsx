@@ -12,14 +12,14 @@ import useMeasurement from './hooks/useMeasurement'
 
 export type MoveAwayButtonProps = {
   children: React.ReactNode
-  pressed: boolean | undefined
+  pressed: boolean | Falsy
   setPressed: (pressed: boolean) => void
   onPressIn?: (e?: GestureResponderEvent) => void | Promise<void> | Falsy
   onMove?: (e?: GestureResponderEvent) => void | Promise<void> | Falsy
   onPressOut?: (e?: GestureResponderEvent) => void | Promise<void> | Falsy
   style?: StyleProp<ViewStyle>
   pressedStyle?: StyleProp<ViewStyle>
-  disableRipple?: boolean
+  disableRipple?: boolean | Falsy
   rippleColor?: string
   rippleOpacity?: number
   rippleContainerBorderRadius?: number

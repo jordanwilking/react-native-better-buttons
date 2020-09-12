@@ -7,8 +7,8 @@ import {
   Falsy,
 } from 'react-native'
 import useLongPress from './hooks/useLongPress'
-import { RippleEffectProps } from './ripple'
 import MoveAwayButton from './move-away-button'
+import { RippleEffectProps } from './ripple'
 
 export type LongPressButtonProps = {
   children: React.ReactNode

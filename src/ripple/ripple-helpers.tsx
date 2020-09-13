@@ -7,7 +7,6 @@ export const createRipple = ({
   event,
   dimensions,
   rippleSize,
-  rippleCount,
   rippleColor,
   rippleOpacity,
   rippleCentered,
@@ -41,7 +40,6 @@ export const createRipple = ({
   })
 
   return {
-    id: rippleCount,
     progress,
     locationX,
     locationY,

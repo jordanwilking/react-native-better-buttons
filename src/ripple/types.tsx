@@ -8,7 +8,6 @@ import {
 } from 'react-native'
 
 export type RippleType = {
-  id: number
   progress: Animated.Value
   locationX: number
   locationY: number
@@ -65,11 +64,10 @@ export type RippleStyle = {
 
 /* Ripple animation types */
 export type RippleAnimationProps = {
-  id: number
   progress: Animated.Value
   rippleDuration: number
   rippleStyle: RippleStyle
-  removeRipple: (id: number) => void
+  removeRipple: () => void
 }
 
 /* Helper types */
@@ -77,7 +75,6 @@ export type CreateRippleProps = {
   event: GestureResponderEvent
   dimensions: Dimensions
   rippleSize: number
-  rippleCount: number
   rippleColor: string
   rippleOpacity: number
   rippleCentered?: boolean

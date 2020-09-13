@@ -4,7 +4,6 @@ import { RIPPLE_RADIUS } from './ripple-helpers'
 import { RippleAnimationProps } from './types'
 
 const RippleAnimation = ({
-  id,
   progress,
   rippleDuration,
   rippleStyle,
@@ -16,7 +15,7 @@ const RippleAnimation = ({
       easing: Easing.out(Easing.ease),
       duration: rippleDuration,
       useNativeDriver: true,
-    }).start(() => removeRipple(id))
+    }).start(() => removeRipple())
   }, [])
 
   return <Animated.View style={[styles.ripple, rippleStyle]} />

@@ -36,15 +36,11 @@ const Ripple = ({
   ...props
 }: RippleProps) => {
   const [ripples, setRipples] = useState<RippleType[]>([])
-  const [rippleCount, setRippleCount] = useState(1)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
-    if (!ripples.length && rippleCount > 0) {
-      setRippleCount(0)
-    } else if (ripples.length > rippleReset) {
+    if (ripples.length > rippleReset) {
       setRipples([])
-      setRippleCount(0)
     }
   })
 
@@ -87,8 +83,8 @@ const Ripple = ({
     if (rippleOnPressOut) addRipple(event)
   }
 
-  const removeRipple = (id: number) => {
-    setRipples((oldRipples) => oldRipples.filter((ripple) => ripple.id !== id))
+  const removeRipple = () => {
+    setRipples((oldRipples) => oldRipples.slice(1))
   }
 
   const addRipple = (event: GestureResponderEvent) => {
@@ -96,15 +92,13 @@ const Ripple = ({
       event,
       dimensions,
       rippleSize,
-      rippleCount,
       rippleCentered,
       rippleColor,
       rippleOpacity,
       disableRippleFade,
     })
 
-    setRippleCount(rippleCount + 1)
-    setRipples(ripples.concat(ripple))
+    setRipples((oldRipples) => oldRipples.concat(ripple))
   }
 
   return (
@@ -121,11 +115,10 @@ const Ripple = ({
       {...props}>
       {children}
       <View style={[styles.container, { borderRadius }]}>
-        {ripples.map((ripple) => {
+        {ripples.map((ripple, index) => {
           return (
             <RippleAnimation
-              key={ripple.id}
-              id={ripple.id}
+              key={index}
               progress={ripple.progress}
               rippleDuration={rippleDuration}
               rippleStyle={ripple.style}
